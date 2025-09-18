@@ -1,10 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
-import logo from "../logo.svg";
 
 export const Route = createFileRoute("/")({
 	component: App,
 });
 
 function App() {
-	return <div>GSW</div>;
+	return <div className="text-3xl font-bold hover:underline">GSW</div>;
 }
