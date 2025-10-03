@@ -134,19 +134,19 @@ function Telemetry() {
                             <TabsTrigger value="sys">SYS</TabsTrigger>
                         </TabsList>
                         <TabsContent value="adco" className="mt-4">
-                            <ADCO />
+                            <ADCO telemetryData={data} />
                         </TabsContent>
                         <TabsContent value="eclss" className="mt-4">
-                            <ECLSS />
+                            <ECLSS telemetryData={data} />
                         </TabsContent>
                         <TabsContent value="fido" className="mt-4">
-                            <FIDO />
+                            <FIDO telemetryData={data} />
                         </TabsContent>
                         <TabsContent value="met" className="mt-4">
-                            <MET />
+                            <MET telemetryData={data} />
                         </TabsContent>
                         <TabsContent value="sys" className="mt-4">
-                            <SYS />
+                            <SYS telemetryData={data} />
                         </TabsContent>
                     </Tabs>
                 </div>
