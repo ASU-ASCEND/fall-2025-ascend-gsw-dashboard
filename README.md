@@ -14,7 +14,7 @@ SYS (System Operations): millis, pcf8523_year, pcf8523_month, pcf8523_day, pcf85
 
 ADCO (Attitude Determination and Control): icm20948_accx_g, icm20948_accy_g, icm20948_accz_g, icm20948_gyrox_deg_s, icm20948_gyroy_deg_s, icm20948_gyroz_deg_s, icm20948_magx_ut, icm20948_magy_ut, icm20948_magz_ut, icm20948_temp_c
 
-FDO (Flight Dynamics): mtk3339_year, mtk3339_month, mtk3339_day, mtk3339_hour, mtk3339_minute, mtk3339_second, mtk3339_latitude, mtk3339_longitude, mtk3339_speed, mtk3339_heading, mtk3339_altitude, mtk3339_satellites, bmp390_temp_c, bmp390_pressure_pa, bmp390_altitude_m
+FIDO (Flight Dynamics): mtk3339_year, mtk3339_month, mtk3339_day, mtk3339_hour, mtk3339_minute, mtk3339_second, mtk3339_latitude, mtk3339_longitude, mtk3339_speed, mtk3339_heading, mtk3339_altitude, mtk3339_satellites, bmp390_temp_c, bmp390_pressure_pa, bmp390_altitude_m
 
 ECLSS (Environmental Control and Life Support): tmp117_temp_c, shtc3_temp_c, shtc3_rel_hum, scd40_co2_conc_ppm, scd40_temp_c, scd40_rel_hum, ens160_aqi, ens160_tvoc_ppb, ens160_eco2_ppm
 

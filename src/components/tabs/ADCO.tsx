@@ -7,21 +7,15 @@ interface ADCOProps {
 }
 
 const ADCO: React.FC<ADCOProps> = ({ telemetryData }) => {
-    const { dataPoints, latestData, chartData, dataCount } = useDataAccumulator(telemetryData, {
+    const { latestData, chartData } = useDataAccumulator(telemetryData, {
         maxDataPoints: 100,
         shouldAdd: (data) => {
-            console.log('ADCO shouldAdd check:', data);
+
             // Check if ICM20948 fields exist at root level
             const hasICMData = data && data.icm20948_accx_g !== undefined;
-            console.log('ADCO hasICMData:', hasICMData);
             return hasICMData;
         },
         extractData: (data) => {
-            console.log('ADCO extractData - ICM20948 fields:', {
-                accx: data.icm20948_accx_g,
-                accy: data.icm20948_accy_g,
-                accz: data.icm20948_accz_g
-            });
             return {
                 // Use millis from telemetry data for x-axis
                 millis: data.millis || Date.now(),
@@ -50,16 +44,15 @@ const ADCO: React.FC<ADCOProps> = ({ telemetryData }) => {
     const tempChartRef = useRef<HTMLDivElement>(null);
 
     // Refs to track current plots for safe cleanup
-    const accPlotRef = useRef<HTMLElement | null>(null);
-    const gyroPlotRef = useRef<HTMLElement | null>(null);
-    const magPlotRef = useRef<HTMLElement | null>(null);
-    const tempPlotRef = useRef<HTMLElement | null>(null);
+    const accPlotRef = useRef<Element | null>(null);
+    const gyroPlotRef = useRef<Element | null>(null);
+    const magPlotRef = useRef<Element | null>(null);
+    const tempPlotRef = useRef<Element | null>(null);
 
     // Create acceleration chart
     useEffect(() => {
         if (!accChartRef.current || chartData.length === 0) return;
 
-        console.log('ADCO Chart Data:', chartData.length, chartData);
 
         // Calculate time domain based on actual millis values from the data
         const millisValues = chartData.map(d => d.millis).filter(m => m !== undefined);
@@ -366,8 +359,7 @@ const ADCO: React.FC<ADCOProps> = ({ telemetryData }) => {
             <h3 className="text-lg font-medium text-gray-800 mb-4">
                 Attitude Determination and Control (ICM20948)
             </h3>
-
-            {/* Debug Info */}
+            {/* 
             {telemetryData && (
                 <div className="mb-4 bg-yellow-50 p-3 rounded border border-yellow-200">
                     <h4 className="text-sm font-medium text-yellow-800 mb-2">Debug: Raw Telemetry Data</h4>
@@ -377,15 +369,15 @@ const ADCO: React.FC<ADCOProps> = ({ telemetryData }) => {
                 </div>
             )}
 
-            {/* Chart Data Debug */}
+
             <div className="mb-4 bg-blue-50 p-3 rounded border border-blue-200">
                 <h4 className="text-sm font-medium text-blue-800 mb-2">Debug: Chart Data ({chartData.length} points)</h4>
                 <pre className="text-xs bg-white p-2 rounded overflow-auto max-h-32">
                     {JSON.stringify(chartData.slice(-3), null, 2)}
                 </pre>
-            </div>
+            </div> 
 
-            {/* Status Cards */}
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                 <div className="bg-white p-3 rounded border">
                     <p className="text-sm text-gray-600">Data Points</p>
@@ -404,6 +396,8 @@ const ADCO: React.FC<ADCOProps> = ({ telemetryData }) => {
                     </p>
                 </div>
             </div>
+
+            */}
 
             {/* Charts Grid */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
