@@ -33,7 +33,7 @@ function Telemetry() {
     const backendUrl = `http://${window.location.hostname}:${backendPort}/telemetry-events`;
 
     // Create EventSource connection
-    const [eventSource, eventSourceStatus] = useEventSource(backendUrl, true);
+    const [eventSource, eventSourceStatus] = useEventSource(backendUrl);
 
     // Handle telemetry events
     useEventSourceListener(
