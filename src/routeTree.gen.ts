@@ -9,15 +9,9 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as TelemetryRouteImport } from './routes/telemetry'
 import { Route as ChartRouteImport } from './routes/chart'
 import { Route as IndexRouteImport } from './routes/index'
 
-const TelemetryRoute = TelemetryRouteImport.update({
-  id: '/telemetry',
-  path: '/telemetry',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ChartRoute = ChartRouteImport.update({
   id: '/chart',
   path: '/chart',
@@ -32,42 +26,31 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/chart': typeof ChartRoute
-  '/telemetry': typeof TelemetryRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/chart': typeof ChartRoute
-  '/telemetry': typeof TelemetryRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/chart': typeof ChartRoute
-  '/telemetry': typeof TelemetryRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/chart' | '/telemetry'
+  fullPaths: '/' | '/chart'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/chart' | '/telemetry'
-  id: '__root__' | '/' | '/chart' | '/telemetry'
+  to: '/' | '/chart'
+  id: '__root__' | '/' | '/chart'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ChartRoute: typeof ChartRoute
-  TelemetryRoute: typeof TelemetryRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/telemetry': {
-      id: '/telemetry'
-      path: '/telemetry'
-      fullPath: '/telemetry'
-      preLoaderRoute: typeof TelemetryRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/chart': {
       id: '/chart'
       path: '/chart'
@@ -88,7 +71,6 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ChartRoute: ChartRoute,
-  TelemetryRoute: TelemetryRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
