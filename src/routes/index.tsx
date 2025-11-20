@@ -29,7 +29,7 @@ function Telemetry() {
     const [error, setError] = useState<string | null>(null);
 
     // Get the backend URL using the current hostname (supports localhost, IP addresses, and domain names)
-    const backendPort = import.meta.env.VITE_BACKEND_PORT || '8080';
+    const backendPort = import.meta.env.VITE_BACKEND_PORT || '1338';
     const backendUrl = `http://${window.location.hostname}:${backendPort}/telemetry-events`;
 
     // Create EventSource connection
