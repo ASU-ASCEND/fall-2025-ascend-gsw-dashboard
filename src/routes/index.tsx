@@ -7,6 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useEventSource, useEventSourceListener } from "@react-nano/use-event-source";
 import { createFileRoute } from "@tanstack/react-router";
 import { useReducer, useState } from "react";
+import VerificationPanel from "@/components/VerificationPanel";
 
 export const Route = createFileRoute("/")({
     component: Telemetry,
@@ -110,7 +111,8 @@ function Telemetry() {
                 )}
 
                 {/* Data Display */}
-                <div className="bg-gray-50 border rounded-lg p-4 mb-6">
+                <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 mb-6 items-start">
+                <div className="min-w-0 bg-gray-50 border rounded-lg p-4">
                     <h2 className="text-lg font-semibold mb-3">Live Data Stream</h2>
                     {data ? (
                         <pre className="bg-white p-4 rounded border overflow-auto max-h-96 text-sm">
@@ -125,7 +127,9 @@ function Telemetry() {
                         </p>
                     )}
                 </div>
-
+                
+                <VerificationPanel />
+                </div>      
                 {/* System Tabs */}
                 <div className="bg-white border rounded-lg p-6">
                     <h2 className="text-lg font-semibold mb-4">System Components</h2>
